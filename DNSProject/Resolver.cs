@@ -9,10 +9,6 @@ using System.Threading;
 
 namespace DNSProject
 {
-    // anfrage qry.name,qry.type,flag.response,flag.recdesired
-    // ./httpProxy.py 127.0.0.101 8080 "127.0.0.10" 53053
-    // fix resolver counts down
-
 
     class Resolver
     {
@@ -38,16 +34,10 @@ namespace DNSProject
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.Append(packet.resp.nextIp);
             stringBuilder.Append(":53053");
-            //testing here
             UdpClient senderClient = new UdpClient();
-            
-            //testing stop
-            //server.Connect(IPEndPoint.Parse(stringBuilder.ToString()));
-
             string JsonDns = JsonConvert.SerializeObject(packet);
             Byte[] sendData = Encoding.ASCII.GetBytes(JsonDns);
 
-            //maybe a udpclient for sending , TODO definetly dont keep ref
             Thread senderThread = new Thread(() =>
             {
                 //server.Send(sendData, sendData.Length);
@@ -63,18 +53,13 @@ namespace DNSProject
 
                 try
                 {
-                //Debug.WriteLine("resolver is listening");
-
-                    //TODO Question this line of code
                     IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Any, port);
                     Byte[] recBuffer = server.Receive(ref iPEndPoint);
                     string data = Encoding.ASCII.GetString(recBuffer);
                     Debug.WriteLine("Server_" + name + "received Data_" + data + " from: " + iPEndPoint);
                     Dns dnsPacket = JsonConvert.DeserializeObject<Dns>(data);
                     
-                    //TODO always checking the cache is not good.
                     string result = CheckCache(dnsPacket);
-                    Debug.WriteLine("Yehaaa, now chache result in resolver!");
 
 
 
