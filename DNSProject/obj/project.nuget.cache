@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "stQNp8uw07UMYWFMAXQu0oydzlSkoDkPUMbTAJXpv+XZ8nk9xPb+u3q1PCbiFWFb3rTg1zn3AohjsxR3Z8SgPg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\dm_devil\\source\\repos\\DNSProject\\DNSProject\\DNSProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dm_devil\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

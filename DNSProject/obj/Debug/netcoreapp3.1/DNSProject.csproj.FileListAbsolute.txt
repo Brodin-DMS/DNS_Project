@@ -1,0 +1,17 @@
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\bin\Debug\netcoreapp3.1\DNSProject.exe
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\bin\Debug\netcoreapp3.1\DNSProject.deps.json
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\bin\Debug\netcoreapp3.1\DNSProject.runtimeconfig.json
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\bin\Debug\netcoreapp3.1\DNSProject.runtimeconfig.dev.json
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\bin\Debug\netcoreapp3.1\DNSProject.dll
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\bin\Debug\netcoreapp3.1\DNSProject.pdb
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.csprojAssemblyReference.cache
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.Form1.resources
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.csproj.GenerateResource.cache
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.AssemblyInfoInputs.cache
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.AssemblyInfo.cs
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.dll
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.pdb
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.genruntimeconfig.cache
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.csproj.CoreCompileInputs.cache
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\dm_devil\source\repos\DNSProject\DNSProject\obj\Debug\netcoreapp3.1\DNSProject.csproj.CopyComplete
