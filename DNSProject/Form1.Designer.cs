@@ -20,6 +20,7 @@
             base.Dispose(disposing);
         }
 
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -28,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -47,7 +49,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.root_btn = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
@@ -64,7 +65,12 @@
             this.button31 = new System.Windows.Forms.Button();
             this.button32 = new System.Windows.Forms.Button();
             this.button33 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button34 = new System.Windows.Forms.Button();
+            this.button35 = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -89,7 +95,6 @@
             this.panel2.Controls.Add(this.button11);
             this.panel2.Controls.Add(this.button12);
             this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -205,7 +210,7 @@
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(188, 52);
             this.button13.TabIndex = 3;
-            this.button13.Text = "DNS\r\nnews.router.telematik";
+            this.button13.Text = "Service Provider\r\nnews.router.telematik";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -219,7 +224,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(188, 52);
             this.button14.TabIndex = 3;
-            this.button14.Text = "DNS easy.homework.fuberlin";
+            this.button14.Text = "Service Provider\r\neasy.homework.fuberlin";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -233,7 +238,7 @@
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(188, 52);
             this.button15.TabIndex = 3;
-            this.button15.Text = "DNS hard.homework.fuberlin";
+            this.button15.Text = "Service Provider\r\nhard.homework.fuberlin";
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -247,7 +252,7 @@
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(188, 52);
             this.button16.TabIndex = 3;
-            this.button16.Text = "DNS windows.pcpools.fuberlin";
+            this.button16.Text = "Service Provider\r\nwindows.pcpools.fuberlin";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -261,7 +266,7 @@
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(188, 52);
             this.button18.TabIndex = 3;
-            this.button18.Text = "DNS\r\nmacos.pcpools.fuberlin";
+            this.button18.Text = "Service Provider\r\nmacos.pcpools.fuberlin";
             this.button18.UseVisualStyleBackColor = false;
             this.button18.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -275,7 +280,7 @@
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(188, 52);
             this.button17.TabIndex = 3;
-            this.button17.Text = "DNS\r\nlinux.pcpools.fuberlin";
+            this.button17.Text = "Service Provider\r\nlinux.pcpools.fuberlin";
             this.button17.UseVisualStyleBackColor = false;
             this.button17.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -289,7 +294,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(188, 52);
             this.button4.TabIndex = 3;
-            this.button4.Text = "DNS\r\nshop.router.telematik";
+            this.button4.Text = "Service Provider\r\nshop.router.telematik";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -303,7 +308,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(188, 52);
             this.button3.TabIndex = 3;
-            this.button3.Text = "DNS\r\nwww.switch.telematik";
+            this.button3.Text = "Service Provider\r\nwww.switch.telematik";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -331,7 +336,7 @@
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(188, 52);
             this.button12.TabIndex = 3;
-            this.button12.Text = "DNS\r\nmail.switch.telematik";
+            this.button12.Text = "Service Provider\r\nmail.switch.telematik";
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -349,14 +354,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.MediumAquamarine;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(11, 53);
-            this.panel3.TabIndex = 2;
-            // 
             // root_btn
             // 
             this.root_btn.Location = new System.Drawing.Point(701, 59);
@@ -365,6 +362,7 @@
             this.root_btn.TabIndex = 2;
             this.root_btn.Text = "Root";
             this.root_btn.UseVisualStyleBackColor = true;
+            this.root_btn.Click += new System.EventHandler(this.root_btn_Click);
             // 
             // button19
             // 
@@ -384,6 +382,7 @@
             this.button20.TabIndex = 4;
             this.button20.Text = "fuberlin";
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button21
             // 
@@ -413,6 +412,7 @@
             this.button23.TabIndex = 7;
             this.button23.Text = "homework.fuberlin";
             this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // button24
             // 
@@ -422,6 +422,7 @@
             this.button24.TabIndex = 8;
             this.button24.Text = "pcpools.fuberlin";
             this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // button25
             // 
@@ -451,6 +452,7 @@
             this.button27.TabIndex = 11;
             this.button27.Text = "shop.router.telematik";
             this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // button28
             // 
@@ -460,6 +462,7 @@
             this.button28.TabIndex = 12;
             this.button28.Text = "news.router.telematik";
             this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // button29
             // 
@@ -469,6 +472,7 @@
             this.button29.TabIndex = 13;
             this.button29.Text = "easy.homework.fuberlin";
             this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
             // button30
             // 
@@ -478,6 +482,7 @@
             this.button30.TabIndex = 14;
             this.button30.Text = "hard.homework.fuberlin";
             this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
             // 
             // button31
             // 
@@ -487,6 +492,7 @@
             this.button31.TabIndex = 15;
             this.button31.Text = "windows....";
             this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
             // button32
             // 
@@ -496,6 +502,7 @@
             this.button32.TabIndex = 16;
             this.button32.Text = "macOS....";
             this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
             // 
             // button33
             // 
@@ -507,12 +514,44 @@
             this.button33.UseVisualStyleBackColor = true;
             this.button33.Click += new System.EventHandler(this.button33_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.richTextBox1.Location = new System.Drawing.Point(228, 361);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1129, 309);
+            this.richTextBox1.TabIndex = 19;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // button34
+            // 
+            this.button34.Location = new System.Drawing.Point(418, 30);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(71, 52);
+            this.button34.TabIndex = 20;
+            this.button34.Text = "Resolver";
+            this.button34.UseVisualStyleBackColor = true;
+            // 
+            // button35
+            // 
+            this.button35.Location = new System.Drawing.Point(250, 45);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(84, 23);
+            this.button35.TabIndex = 21;
+            this.button35.Text = "Application";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(43)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(1369, 682);
+            this.Controls.Add(this.button35);
+            this.Controls.Add(this.button34);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button33);
             this.Controls.Add(this.button32);
             this.Controls.Add(this.button31);
@@ -534,13 +573,13 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;
@@ -575,6 +614,10 @@
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.Button button32;
         private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 

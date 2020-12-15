@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -17,6 +19,13 @@ namespace DNSProject
         Dictionary<Tuple<string,int>,Tuple<string,int>> chache;
         int port;
         UdpClient server;
+        public static string baseLogsPath = AppDomain.CurrentDomain.BaseDirectory + "MyLogs";
+
+        //log Data
+        int reqSend;
+        int reqRcv;
+        int respSend;
+        int respRcv;
 
         public Resolver()
         {
@@ -28,6 +37,44 @@ namespace DNSProject
             this.port = 53053;
             this.server = new UdpClient(iPEndPoint);
             Debug.WriteLine("Server_" + name + " initialized");
+            File.Create(baseLogsPath + "\\" + "127.0.0.10" + ".txt").Dispose();
+            //init LogData
+            this.reqSend = 0;
+            this.reqRcv = 0;
+            this.respSend = 0;
+            this.respRcv = 0;
+            StartDicTtlCountdown();
+        }
+        public void StartDicTtlCountdown()
+        {
+
+            Thread ttlCountdown = new Thread(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(1000);
+                    Dictionary<Tuple<string, int>, Tuple<string, int>> tempDict = new Dictionary<Tuple<string, int>, Tuple<string, int>>();
+
+                    foreach (Tuple<string, int> key in chache.Keys)
+                    {
+                        if (chache[key].Item2 <= 1)
+                        {
+                            continue;
+                        }
+                        int tempint = chache[key].Item2;
+                        tempint--;
+                        tempDict.Add(key, new Tuple<string, int>(chache[key].Item1, tempint));
+                        
+                    }
+                    chache = tempDict;
+                    //DEBUGGING -- displays chache every second. Enable the 4 following lines of code to Write chache to Debug
+                    //foreach (Tuple<string, int> testvalues in chache.Values)
+                    //{
+                    //    Debug.WriteLine(testvalues.Item1 + " : " + testvalues.Item2);
+                    //}
+                }
+            });
+            ttlCountdown.Start();
         }
         private void GenerateCon(Dns packet)
         {
@@ -40,8 +87,14 @@ namespace DNSProject
 
             Thread senderThread = new Thread(() =>
             {
-                //server.Send(sendData, sendData.Length);
+                //highlight button
+                Form1.ActiveForm.Controls["button34"].BackColor = Color.LightBlue;
+                Thread.Sleep(350);
+                //stop highlight button
+                Form1.ActiveForm.Controls["button34"].BackColor = Color.FromArgb(0, 44, 43, 60);
                 senderClient.Send(sendData, sendData.Length, packet.resp.nextIp,53053);
+                reqSend++;
+                WriteLog();
             });
             senderThread.Start();
 
@@ -72,27 +125,58 @@ namespace DNSProject
                 }
             }
         }
+        void WriteLog()
+        {
+            using (System.IO.StreamWriter file =
+            new System.IO.StreamWriter(baseLogsPath + "\\" + "127.0.0.10" + ".txt", true))
+            {
+                StringBuilder logBuilder = new StringBuilder();
+                logBuilder.Append(DateTime.Now);
+                logBuilder.Append("|");
+                logBuilder.Append("127.0.0.10");
+                logBuilder.Append("|");
+                logBuilder.Append(reqSend.ToString());
+                logBuilder.Append("|");
+                logBuilder.Append(reqRcv.ToString());
+                logBuilder.Append("|");
+                logBuilder.Append(respSend.ToString());
+                logBuilder.Append("|");
+                logBuilder.Append(respRcv);
+                file.WriteLine(logBuilder.ToString());
+            }
+        }
 
         public string CheckCache(Dns packet)
         {
+            if (packet.resp.nextIp == "")
+            {
+                reqRcv++;
+                WriteLog();
+            }
+            else
+            {
+                respRcv++;
+                WriteLog();
+            }
+
             Tuple<string,int> key = new Tuple<string, int>(packet.qry.name, packet.qry.type);
-            return (chache.ContainsKey(key)) ? chache[key].Item1 : ResolveRecursiv(packet);
+            return (chache.ContainsKey(key)) ? AnswerToApplication(chache[key].Item1) : ResolveRecursiv(packet);
 
         }
-        public void StoreInCache()
+        public void StoreInCache(Tuple<string,int> key,Tuple<string,int> value)
         {
-
+            if(!chache.ContainsKey(key)) { chache.Add(key, value); }
         }
         public string ResolveRecursiv(Dns packet)
         {
-            //TODO maybe check auth flag instead
             if(packet.resp.nextIp == null)
             {
-                packet.a = packet.resp.nextIp;
                 Debug.WriteLine("Result of " + packet.qry.name + " resolved to " + packet.a);
+                StoreInCache(new Tuple<string, int>(packet.qry.name, packet.qry.type), new Tuple<string, int>(packet.a, packet.resp.ttl));
+                AnswerToApplication(packet.a);
+
                 return packet.a;
             }
-            //TODO manipulate response
             if (packet.resp.nextIp == "")
             {
                 packet.resp.nextIp = "127.0.0.11";
@@ -107,7 +191,32 @@ namespace DNSProject
         }
         public void manipulateReq(Dns packet)
         {
-            //Todo change response, 
+
         }
+        string AnswerToApplication(string serviceData)
+        {
+            
+            Thread answerToApplicationThread = new Thread(() =>
+            {
+                UdpClient answerListender = new UdpClient(IPEndPoint.Parse("127.0.0.10:53443"));
+                IPEndPoint applicationEndpoint = IPEndPoint.Parse("127.0.0.1:51337");
+                answerListender.Connect(applicationEndpoint);
+                Byte[] sendData = Encoding.ASCII.GetBytes(serviceData);
+                //highlight button
+                Form1.ActiveForm.Controls["button34"].BackColor = Color.LightBlue;
+                Thread.Sleep(350);
+                //stop highlight button
+                Form1.ActiveForm.Controls["button34"].BackColor = Color.FromArgb(0, 44, 43, 60);
+                answerListender.Send(sendData, sendData.Length);
+                respSend++;
+                WriteLog();
+                answerListender.Close();
+
+            });
+            answerToApplicationThread.Start();
+            return serviceData;
+        }
+
+
     }
 }
